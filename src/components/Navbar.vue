@@ -6,6 +6,7 @@
             <div class="links">
                 <div v-if="user">
                     <router-link :to="{ name: 'CreatePlaylist' }">Create Playlist</router-link>
+                    <router-link :to="{ name: 'UserPlaylists' }">My Playlists</router-link>
                     <button @click="handleClick">Logout</button>
                 </div>
                 <div v-else>
@@ -19,8 +20,6 @@
   
 <script>
 // challenge
-//   - fire a function called handleSubmit when the logout button is clicked
-//   - inside the function log the user out & then redirect to the login view
 //   - only show the logout button if we are logged in
 //   - only show the signup and login links if we are not logged in
 //   - use the getUser composable to help
