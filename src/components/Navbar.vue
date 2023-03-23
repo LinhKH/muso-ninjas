@@ -5,6 +5,7 @@
             <h1><router-link :to="{ name: 'Home' }">Muso Ninjas</router-link></h1>
             <div class="links">
                 <div v-if="user">
+                    <router-link :to="{ name: 'CreatePlaylist' }">Create Playlist</router-link>
                     <button @click="handleClick">Logout</button>
                 </div>
                 <div v-else>
@@ -20,15 +21,18 @@
 // challenge
 //   - fire a function called handleSubmit when the logout button is clicked
 //   - inside the function log the user out & then redirect to the login view
+//   - only show the logout button if we are logged in
+//   - only show the signup and login links if we are not logged in
+//   - use the getUser composable to help
 
-import useLogout from '@/composables/useLogout'
-import getUser from '@/composables/getUser'
+import getUser from '../composables/getUser'
+import useLogout from '../composables/useLogout'
 import { useRouter } from 'vue-router'
 
 export default {
     setup() {
-        const { logout } = useLogout()
         const { user } = getUser()
+        const { logout } = useLogout()
         const router = useRouter()
 
         const handleClick = async () => {
